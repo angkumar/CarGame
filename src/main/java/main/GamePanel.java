@@ -1,5 +1,6 @@
 package main;
 
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -9,6 +10,8 @@ import javax.swing.JPanel;
 
 import entity.Player;
 import tile.tileManager;
+
+import entity.ControllerInput;
 
 public class GamePanel extends JPanel implements Runnable{
 
@@ -33,6 +36,7 @@ public class GamePanel extends JPanel implements Runnable{
     Thread gameThread;
     public Player player = new Player(this, keyH);
 
+    ControllerInput controllerInput;
 
     public GamePanel() {
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
@@ -40,6 +44,8 @@ public class GamePanel extends JPanel implements Runnable{
         this.setDoubleBuffered(true);
         this.addKeyListener(keyH);
         this.setFocusable(true);
+
+        controllerInput = new ControllerInput();
     }
 
     public void startGameThread() {
@@ -48,41 +54,6 @@ public class GamePanel extends JPanel implements Runnable{
         gameThread.start();
 
     }
-
-    @Override
-    // public void run() {
-        
-    //     double drawInterval = 1000000000/FPS;
-    //     double nextDrawTime = System.nanoTime() + drawInterval;
-
-    //     while (gameThread != null) {
-
-    //         long currentTime = System.nanoTime();
-    //         long currentTime2 = System.currentTimeMillis();
-    //         System.out.println("Current Time " + currentTime);
-            
-    //         update();
-
-    //         repaint();
-
-    //         try {
-    //             double remainingTime = nextDrawTime - System.nanoTime();
-    //             remainingTime = remainingTime/1000000;
-
-    //             if(remainingTime < 0) {
-    //                 remainingTime = 0;
-    //             }
-
-    //             Thread.sleep((long) remainingTime);
-
-    //             nextDrawTime += drawInterval;
-
-    //         } catch(InterruptedException e) {
-    //             e.printStackTrace();
-    //         }
-        
-    //     }
-    // }
 
     public void run() {
 
@@ -116,9 +87,9 @@ public class GamePanel extends JPanel implements Runnable{
         }
     }
     public void update() {
-        player.update();
-        
-    }
+    
+    player.update();  // Update player normally
+}
 
     public void paintComponent(Graphics g){
         
@@ -133,4 +104,6 @@ public class GamePanel extends JPanel implements Runnable{
         g2.dispose();
 
     }
+
+    
 }

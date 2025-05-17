@@ -1,7 +1,6 @@
 package tile;
 
 import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -61,7 +60,7 @@ public class tileManager {
     public void loadMap() {
 
         try {
-            InputStream is = getClass().getResourceAsStream("/res/maps/world01.txt/");
+            InputStream is = getClass().getResourceAsStream("/res/maps/world01.txt");
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
 
             int col = 0;
