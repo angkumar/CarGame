@@ -8,7 +8,7 @@ public class App {
         JFrame window = new JFrame();
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setResizable(false);
-        window.setTitle("Car Game");
+        window.setTitle("Car Games");
 
         GamePanel gamePanel = new GamePanel();
         window.add(gamePanel);
